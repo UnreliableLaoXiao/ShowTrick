@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:id="@+id/setting_tool_bar"
+        android:background="@color/style_color"
+        app:navigationIcon="@drawable/ic_setting_back"
+        app:title="@string/setting_name"
+        app:titleTextColor="#FFFFFF"
+        android:layout_height="wrap_content"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/setting_base" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/setting_rv_base"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="base" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/setting_other" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/setting_rv_other"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="other" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/setting_about" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/setting_rv_about"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="about" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

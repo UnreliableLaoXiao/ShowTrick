@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setting_name">设置</string>
+    <string name="setting_about">关于</string>
+    <string name="setting_base">基本设置</string>
+    <string name="setting_other">其他设置</string>
+</resources>
