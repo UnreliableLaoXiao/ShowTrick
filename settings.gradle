@@ -1,2 +1,4 @@
+include ':setting'
+include ':lib'
 include ':app'
 rootProject.name = "ShowTrick"
