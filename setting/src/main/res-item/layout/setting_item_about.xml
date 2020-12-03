@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:padding="10dp"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/item_about_img"
+        android:layout_centerVertical="true"
+        tools:src="@drawable/ic_phone_info"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:id="@+id/item_about_title"
+        android:layout_marginLeft="10dp"
+        android:textColor="#000000"
+        tools:text="关于手机"
+        android:layout_toRightOf="@id/item_about_img"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:maxLines="2"
+        android:maxWidth="300dp"
+        android:id="@+id/item_about_mes"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/item_about_title"
+        tools:text="关于手机"
+        android:layout_toRightOf="@id/item_about_img"/>
+
+</RelativeLayout>

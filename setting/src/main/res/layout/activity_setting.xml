@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:id="@+id/setting_tool_bar"
-        android:background="@color/style_color"
-        app:navigationIcon="@drawable/ic_setting_back"
-        app:title="@string/setting_name"
-        app:titleTextColor="#FFFFFF"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp"
+        android:background="@color/style_color">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:onClick="onBack"
+            android:drawableLeft="@drawable/ic_setting_back"
+            android:layout_centerVertical="true"
+            android:drawablePadding="5dp"
+            android:text="返回"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:text="@string/setting_name" />
+
+
+    </RelativeLayout>
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -30,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:textSize="16sp"
                 android:text="@string/setting_base" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -42,6 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:textSize="16sp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/setting_other" />
 
@@ -55,6 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:textSize="16sp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/setting_about" />
 
@@ -62,6 +87,7 @@
                 android:id="@+id/setting_rv_about"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                tools:listitem="@layout/setting_item_about"
                 android:tag="about" />
 
         </LinearLayout>
