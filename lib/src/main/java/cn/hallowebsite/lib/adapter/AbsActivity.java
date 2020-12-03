@@ -8,19 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import cn.hallowebsite.lib.immersive.ImmersiveAdapter;
-
 public abstract class AbsActivity extends AppCompatActivity {
-
-    private Unbinder bind;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayoutXmlid());
-        ImmersiveAdapter.setActivityAdapter(this,isLightStatusBar());
+        //沉浸式有问题
+//        ImmersiveAdapter.setActivityAdapter(this,isLightStatusBar());
         initOnCreate();
     }
 

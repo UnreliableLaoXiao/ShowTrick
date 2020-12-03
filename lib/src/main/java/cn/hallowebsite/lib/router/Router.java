@@ -41,15 +41,15 @@ public class Router {
         }
     }
 
-    public static void startPath(String path, Activity activity) {
-        startPath(path,null,activity);
+    public static void startPath(String path, Activity context) {
+        startPath(path,null,context);
     }
 
-    public static void startPath(String path , Bundle bundle,Activity activity) {
-        startPath(path,bundle,-1,activity);
+    public static void startPath(String path , Bundle bundle, Activity context) {
+        startPath(path,bundle,-1,context);
     }
 
-    public static void startPath(String path , Bundle bundle,int requestCode,Activity activity) {
+    public static void startPath(String path , Bundle bundle,int requestCode, Activity context) {
         Class<?> aClass = routerMap.get(path);
 
         if (aClass == null) {
@@ -57,15 +57,15 @@ public class Router {
             return;
         }
 
-        Intent intent = new Intent(activity,aClass);
+        Intent intent = new Intent(context,aClass);
         if (bundle != null) {
             intent.putExtras(bundle);
         }
 
         if (requestCode != -1) {
-            activity.startActivityForResult(intent,requestCode);
+            context.startActivityForResult(intent,requestCode);
         } else {
-            activity.startActivity(intent);
+            context.startActivity(intent);
         }
     }
 }
