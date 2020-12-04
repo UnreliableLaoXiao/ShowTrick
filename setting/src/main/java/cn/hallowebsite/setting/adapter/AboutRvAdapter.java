@@ -2,6 +2,8 @@ package cn.hallowebsite.setting.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
@@ -27,21 +29,24 @@ public class AboutRvAdapter extends AbsRecyclerViewAdapter<AboutItem> {
         setOnItemClickListener(new ItemClickListener());
     }
 
-    //定义关于列表的小图标
-    private int[] iconIds = {
-            R.drawable.ic_phone_info, R.drawable.ic_about_help, R.drawable.ic_func_debug
-    };
-
     //初始化资源
+    @SuppressLint("ResourceType")
     private void initLocalData() {
-        String[] titles = context.getApplicationContext().getResources().getStringArray(R.array.setting_about_title);
-        String[] mess = context.getApplicationContext().getResources().getStringArray(R.array.setting_about_mes);
-        String[] routerPaths = context.getApplicationContext().getResources().getStringArray(R.array.setting_about_router);
         ArrayList<AboutItem> aboutItems = new ArrayList<>();
-        for (int i = 0 ; i < titles.length ; i++) {
-            AboutItem aboutItem = new AboutItem(titles[i], iconIds[i], routerPaths[i], mess[i]);
+        Resources resources = context.getApplicationContext().getResources();
+        TypedArray settingAbout = resources.obtainTypedArray(R.array.setting_about);
+        String[] stringArray = resources.getStringArray(R.array.setting_about);
+        for (int i = 0; i < stringArray.length; i++) {
+            AboutItem aboutItem = new AboutItem();
+            TypedArray typedArray = resources.obtainTypedArray(settingAbout.getResourceId(i, 0));
+            aboutItem.title = typedArray.getString(0);
+            aboutItem.mes = typedArray.getString(1);
+            aboutItem.routerPath = typedArray.getString(2);
+            aboutItem.iconId = typedArray.getResourceId(3,0);
             aboutItems.add(aboutItem);
+            typedArray.recycle();
         }
+        settingAbout.recycle();
         addDataSource(aboutItems);
     }
 

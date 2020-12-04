@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="setting_about_title">
+    <string-array name="setting_about">
+        <item>@array/about_phone_info</item>
+        <item>@array/about_help</item>
+        <item>@array/about_debug</item>
+    </string-array>
+
+    <string-array name="about_phone_info">
         <item>关于本机</item>
-        <item>关于我们</item>
-        <item>功能调试</item>
-    </string-array>
-
-    <string-array name="setting_about_mes">
         <item>关于本机的参数显示</item>
-        <item>作者联系方式</item>
-        <item>支持的模块的功能调试</item>
+        <item>Setiting/About/PhoneInfo</item>
+        <item>@drawable/ic_phone_info</item>
     </string-array>
 
-    <string-array name="setting_about_router">
-        <item>Setiting/About/PhoneInfo</item>
+    <string-array name="about_help">
+        <item>关于我们</item>
+        <item>作者联系方式</item>
         <item>Setiting/About/Help</item>
-        <item>Setiting/About/Debug</item>
+        <item>@drawable/ic_about_help</item>
     </string-array>
+
+    <string-array name="about_debug">
+        <item>功能调试</item>
+        <item>支持的模块的功能调试</item>
+        <item>Setiting/About/Debug</item>
+        <item>@drawable/ic_func_debug</item>
+    </string-array>
+
 </resources>

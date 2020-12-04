@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     android:padding="10dp"
-    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/item_touched_background"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
