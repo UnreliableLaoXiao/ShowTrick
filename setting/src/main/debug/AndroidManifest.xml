@@ -5,6 +5,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_settings"
         android:label="@string/setting_name"
+        android:name=".App"
         android:roundIcon="@drawable/ic_settings"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"

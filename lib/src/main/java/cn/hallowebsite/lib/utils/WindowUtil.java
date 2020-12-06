@@ -7,38 +7,41 @@ import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//TODO 待测试
+
 public class WindowUtil {
 
     //获取屏幕区域的宽高等尺寸获取
-    public void getWindowMetrics(AppCompatActivity activity){
+    public static void getWindowMetrics(AppCompatActivity activity,int[] size){
         DisplayMetrics metrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int height = metrics.heightPixels;
-        int width = metrics.widthPixels;
+        size[1] = metrics.heightPixels;
+        size[0] = metrics.widthPixels;
     }
 
+    //TODO 有问题
     //应用程序App区域宽高等尺寸获取
-    public void getAppWindowMetrics(AppCompatActivity activity){
+    public static void getAppWindowMetrics(AppCompatActivity activity,int[] size){
         Rect rect = new Rect();
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
-        int height = rect.height();
-        int width = rect.width();
+        size[1] = rect.height();
+        size[0] = rect.width();
     }
 
+    //TODO 有问题
     //获取状态栏高度
-    public void getAppStatusWindowMetrics(AppCompatActivity activity){
+    public static int getAppStatusWindowMetrics(AppCompatActivity activity){
         Rect rect = new Rect();
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
-        int statusheight = rect.top;
+        return rect.bottom - rect.top;
     }
 
+    //TODO 有问题
     //View布局区域宽高等尺寸获取
-    public void getAppViewWindowMetrics(AppCompatActivity activity){
+    public static void getAppViewWindowMetrics(AppCompatActivity activity,int[] size){
         Rect rect = new Rect();
         activity.getWindow().findViewById(Window.ID_ANDROID_CONTENT).getDrawingRect(rect);
-        int height = rect.height();
-        int width = rect.width();
+        size[1] = rect.height();
+        size[0] = rect.width();
     }
 
     /**
