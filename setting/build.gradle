@@ -34,7 +34,7 @@ android {
                     exclude 'debug/**'   //正式版删除debug包下的内容
                 }
             }
-            res.srcDirs += "src/main/res-item"
+            main.res.srcDirs += ['src/main/res-about', 'src/main/res-fun']
         }
     }
 

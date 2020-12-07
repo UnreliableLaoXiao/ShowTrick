@@ -69,6 +69,7 @@ public class PhoneModelView extends View {
 
     public void setDefaultColor(int defaultColor) {
         this.defaultColor = defaultColor;
+        paint.setColor(defaultColor);
     }
 
     public void setSelectColor(int selectColor) {

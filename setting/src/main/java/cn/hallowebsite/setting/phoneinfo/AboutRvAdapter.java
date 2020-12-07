@@ -1,4 +1,4 @@
-package cn.hallowebsite.setting.adapter;
+package cn.hallowebsite.setting.phoneinfo;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import cn.hallowebsite.lib.adapter.AbsRecyclerViewAdapter;
 import cn.hallowebsite.lib.router.Router;
-import cn.hallowebsite.setting.Item.AboutItem;
 import cn.hallowebsite.setting.R;
 
 public class AboutRvAdapter extends AbsRecyclerViewAdapter<AboutItem> {

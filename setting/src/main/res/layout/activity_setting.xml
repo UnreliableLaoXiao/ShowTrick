@@ -87,7 +87,7 @@
                 android:id="@+id/setting_rv_about"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/setting_item_about"
+                tools:listitem="@layout/setting_item_fun"
                 android:tag="about" />
 
         </LinearLayout>

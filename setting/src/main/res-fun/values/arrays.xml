@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fun_list">
+        <item>@array/fun_file_manager</item>
+    </string-array>
+
+    <string-array name="fun_file_manager">
+        <item>文件管理</item>
+        <item>关于应用内部和外部的文件管理操作</item>
+        <item>Setiting/About/Fun/FileManager</item>
+        <item>@drawable/ic_file_manager</item>
+    </string-array>
+</resources>

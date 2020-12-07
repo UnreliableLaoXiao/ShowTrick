@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import cn.hallowebsite.lib.adapter.AbsActivity;
-import cn.hallowebsite.setting.adapter.AboutRvAdapter;
+import cn.hallowebsite.setting.phoneinfo.AboutRvAdapter;
 
 
 public class SettingActivity extends AbsActivity {

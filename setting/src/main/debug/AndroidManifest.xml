@@ -19,6 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".phoneinfo.AboutPhoneInfoActivity" />
+        <activity android:name=".fundebug.FunDebugListActivity" />
+        <activity android:name=".fundebug.filemanager.FileManagerActivity" />
 
     </application>
 </manifest>

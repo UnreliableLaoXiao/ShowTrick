@@ -1,6 +1,7 @@
 package cn.hallowebsite.setting.phoneinfo;
 
 import android.annotation.SuppressLint;
+import android.view.View;
 import android.widget.TextView;
 
 import cn.hallowebsite.lib.adapter.AbsActivity;
@@ -29,6 +30,7 @@ public class AboutPhoneInfoActivity extends AbsActivity implements PhoneModelVie
         density = findViewById(R.id.density);
         currentAreaName = findViewById(R.id.current_area_name);
         phoneModel = findViewById(R.id.phone_model);
+        phoneModel.setDefaultColor(getResources().getColor(R.color.style_color));
         initData();
     }
 
@@ -49,6 +51,10 @@ public class AboutPhoneInfoActivity extends AbsActivity implements PhoneModelVie
         //获取像素密度
         density.setText("像素密度：" + WindowUtil.getDensity());
         phoneModel.setListener(this);
+    }
+
+    public void onBack(View view) {
+        finish();
     }
 
     @Override

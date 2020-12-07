@@ -1,11 +1,11 @@
-package cn.hallowebsite.setting.Item;
+package cn.hallowebsite.setting.fundebug;
 
-public class AboutItem {
+public class FunListItem {
 
-    public AboutItem() {
+    public FunListItem() {
     }
 
-    public AboutItem(String title, int iconId, String routerPath, String mes) {
+    public FunListItem(String title, String mes, int iconId, String routerPath) {
         this.title = title;
         this.mes = mes;
         this.iconId = iconId;
