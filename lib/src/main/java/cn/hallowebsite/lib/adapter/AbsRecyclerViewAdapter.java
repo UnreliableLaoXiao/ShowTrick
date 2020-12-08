@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 //TODO 待测试
 public abstract class AbsRecyclerViewAdapter<T> extends RecyclerView.Adapter<AbsRecyclerViewAdapter.VH>  {
 
-    private List<T> mDataSource;
+    private ArrayList<T> mDataSource;
     protected Activity context;
     /**
      * 事件回调监听
@@ -26,8 +27,18 @@ public abstract class AbsRecyclerViewAdapter<T> extends RecyclerView.Adapter<Abs
         this.mDataSource = new ArrayList<>(0);
     }
 
-    public void addDataSource(List<T> mDataSource){
-        this.mDataSource = mDataSource;
+    public void updateDataSource(ArrayList<T> files) {
+        mDataSource.clear();
+        mDataSource.addAll(files);
+        this.notifyDataSetChanged();
+    }
+
+    public ArrayList<T> getmDataSource() {
+        return mDataSource;
+    }
+
+    public T getDataByIndex(int postion) {
+        return mDataSource.get(postion);
     }
 
     public abstract int getLayoutId(int viewType);

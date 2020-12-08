@@ -30,7 +30,7 @@ public class FunListRvAdapter extends AbsRecyclerViewAdapter<FunListItem> {
 
     @SuppressLint("ResourceType")
     private void initLocalData() {
-        ArrayList<FunListItem> funListItems = new ArrayList<>();
+        ArrayList<FunListItem> funListItems = getmDataSource();
         Resources resources = context.getApplicationContext().getResources();
         TypedArray settingAbout = resources.obtainTypedArray(R.array.fun_list);
         String[] stringArray = resources.getStringArray(R.array.fun_list);
@@ -45,7 +45,6 @@ public class FunListRvAdapter extends AbsRecyclerViewAdapter<FunListItem> {
             typedArray.recycle();
         }
         settingAbout.recycle();
-        addDataSource(funListItems);
     }
 
     @Override

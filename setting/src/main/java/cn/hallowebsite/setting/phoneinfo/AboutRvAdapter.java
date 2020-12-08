@@ -31,7 +31,7 @@ public class AboutRvAdapter extends AbsRecyclerViewAdapter<AboutItem> {
     //初始化资源
     @SuppressLint("ResourceType")
     private void initLocalData() {
-        ArrayList<AboutItem> aboutItems = new ArrayList<>();
+        ArrayList<AboutItem> aboutItems = getmDataSource();
         Resources resources = context.getApplicationContext().getResources();
         TypedArray settingAbout = resources.obtainTypedArray(R.array.setting_about);
         String[] stringArray = resources.getStringArray(R.array.setting_about);
@@ -46,7 +46,6 @@ public class AboutRvAdapter extends AbsRecyclerViewAdapter<AboutItem> {
             typedArray.recycle();
         }
         settingAbout.recycle();
-        addDataSource(aboutItems);
     }
 
     @Override
