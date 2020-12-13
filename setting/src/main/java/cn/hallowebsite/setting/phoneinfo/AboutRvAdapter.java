@@ -1,7 +1,7 @@
 package cn.hallowebsite.setting.phoneinfo;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
@@ -19,9 +19,11 @@ import cn.hallowebsite.setting.R;
 public class AboutRvAdapter extends AbsRecyclerViewAdapter<AboutItem> {
 
     private static final String TAG = "AboutRvAdapter";
+    private final Context mContext;
+    private ArrayList<AboutItem> aboutItems;
 
-    public AboutRvAdapter(Activity context) {
-        super(context);
+    public AboutRvAdapter(Context context) {
+        mContext = context;
         //初始化数据
         initLocalData();
         //设置点击事件
@@ -31,8 +33,8 @@ public class AboutRvAdapter extends AbsRecyclerViewAdapter<AboutItem> {
     //初始化资源
     @SuppressLint("ResourceType")
     private void initLocalData() {
-        ArrayList<AboutItem> aboutItems = getmDataSource();
-        Resources resources = context.getApplicationContext().getResources();
+        aboutItems = new ArrayList<>();
+        Resources resources = mContext.getApplicationContext().getResources();
         TypedArray settingAbout = resources.obtainTypedArray(R.array.setting_about);
         String[] stringArray = resources.getStringArray(R.array.setting_about);
         for (int i = 0; i < stringArray.length; i++) {
@@ -53,15 +55,25 @@ public class AboutRvAdapter extends AbsRecyclerViewAdapter<AboutItem> {
         return R.layout.setting_item_about;
     }
 
+    @Override
+    protected AboutItem getDataByPosition(int position) {
+        return aboutItems.get(position);
+    }
+
+    @Override
+    protected int getTotalSize() {
+        return aboutItems.size();
+    }
+
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void convert(VH holder, AboutItem data, int position) {
         holder.<TextView>getView(R.id.item_about_title).setText(data.title);
         holder.<TextView>getView(R.id.item_about_mes).setText(data.mes);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            holder.<ImageView>getView(R.id.item_about_img).setImageDrawable(context.getDrawable(data.iconId));
+            holder.<ImageView>getView(R.id.item_about_img).setImageDrawable(mContext.getDrawable(data.iconId));
         } else {
-            holder.<ImageView>getView(R.id.item_about_img).setImageDrawable(context.getResources().getDrawable(data.iconId));
+            holder.<ImageView>getView(R.id.item_about_img).setImageDrawable(mContext.getResources().getDrawable(data.iconId));
         }
     }
 
@@ -69,7 +81,7 @@ public class AboutRvAdapter extends AbsRecyclerViewAdapter<AboutItem> {
         @Override
         public void onItemClick(View view, int position, AboutItem aboutItem) {
             Log.d(TAG, "onItemClick: " + aboutItem);
-            Router.startPath(aboutItem.routerPath,context);
+            Router.startPath(aboutItem.routerPath,mContext);
         }
 
         @Override

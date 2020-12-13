@@ -1,6 +1,5 @@
 package cn.hallowebsite.setting.fundebug.filemanager;
 
-import android.app.Activity;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,15 +12,17 @@ import cn.hallowebsite.setting.R;
  */
 public class FilePathNavRvAdapter extends AbsRecyclerViewAdapter<String> {
 
-    private final ArrayList<String> paths;
+    private ArrayList<String> paths;
 
-    public FilePathNavRvAdapter(Activity context) {
-        super(context);
-        paths = getmDataSource();
+    public FilePathNavRvAdapter(ArrayList<String> paths) {
+        this.paths = paths;
     }
 
-    public void addPath(String...paths) {
-        for (String path : paths) {
+    public void addPath(String...pars) {
+        if (paths == null) {
+            paths = new ArrayList<>();
+        }
+        for (String path : pars) {
             this.paths.add(path);
         }
         notifyDataSetChanged();
@@ -37,6 +38,16 @@ public class FilePathNavRvAdapter extends AbsRecyclerViewAdapter<String> {
     @Override
     public int getLayoutId(int viewType) {
         return R.layout.setting_item_fun_file_path;
+    }
+
+    @Override
+    protected String getDataByPosition(int position) {
+        return paths.get(position);
+    }
+
+    @Override
+    protected int getTotalSize() {
+        return paths.size();
     }
 
     @Override

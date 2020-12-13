@@ -41,15 +41,15 @@ public class Router {
         }
     }
 
-    public static void startPath(String path, Activity context) {
+    public static void startPath(String path, Context context) {
         startPath(path,null,context);
     }
 
-    public static void startPath(String path , Bundle bundle, Activity context) {
+    public static void startPath(String path , Bundle bundle, Context context) {
         startPath(path,bundle,-1,context);
     }
 
-    public static void startPath(String path , Bundle bundle,int requestCode, Activity context) {
+    public static void startPath(String path , Bundle bundle,int requestCode, Context context) {
         Class<?> aClass = routerMap.get(path);
 
         if (aClass == null) {
@@ -63,7 +63,12 @@ public class Router {
         }
 
         if (requestCode != -1) {
-            context.startActivityForResult(intent,requestCode);
+            if (context instanceof Activity) {
+                ((Activity)context).startActivityForResult(intent,requestCode);
+            } else {
+                Log.d(TAG, "startPath: context don't is activity");
+            }
+
         } else {
             context.startActivity(intent);
         }

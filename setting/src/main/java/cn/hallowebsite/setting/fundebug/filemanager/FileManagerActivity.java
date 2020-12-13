@@ -1,5 +1,7 @@
 package cn.hallowebsite.setting.fundebug.filemanager;
 
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -13,11 +15,14 @@ import java.util.HashMap;
 
 import cn.hallowebsite.lib.adapter.AbsActivity;
 import cn.hallowebsite.lib.adapter.AbsRecyclerViewAdapter;
+import cn.hallowebsite.lib.dialog.ListDialog;
 import cn.hallowebsite.lib.router.ActivityRouter;
 import cn.hallowebsite.setting.R;
 
 @ActivityRouter(path = "Setiting/About/Fun/FileManager")
 public class FileManagerActivity extends AbsActivity implements AbsRecyclerViewAdapter.OnItemClickListener<File> {
+
+    private static final String TAG = "FileManagerActivity";
 
     private RecyclerView fileRvList;
     private FileListRvAdapter adapter;
@@ -25,14 +30,14 @@ public class FileManagerActivity extends AbsActivity implements AbsRecyclerViewA
     private FilePathNavRvAdapter filePathNavRvAdapter;
     private HashMap<String,File> navMap = new HashMap<>();
     private ArrayList<File> startPath = new ArrayList<>();
+    private ArrayList<File> files;
 
     @Override
     protected void initOnCreate() {
         //文件夹/文件列表
         fileRvList = findViewById(R.id.file_rv_list);
         fileRvList.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
-        adapter = new FileListRvAdapter(this);
-        getDataSource();
+        adapter = new FileListRvAdapter(getDataSource());
         fileRvList.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
         fileRvList.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -43,10 +48,11 @@ public class FileManagerActivity extends AbsActivity implements AbsRecyclerViewA
             }
         });
 
+
         //文件路径导航
         filepathNav = findViewById(R.id.setting_rv_filepath_nav);
         filepathNav.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
-        filePathNavRvAdapter = new FilePathNavRvAdapter(this);
+        filePathNavRvAdapter = new FilePathNavRvAdapter(new ArrayList<String>());
         filePathNavRvAdapter.addPath("/");
         filepathNav.addItemDecoration(new FilePathNavItemDecoration(this,FilePathNavItemDecoration.HORIZONTAL_LIST));
         filepathNav.setAdapter(filePathNavRvAdapter);
@@ -54,7 +60,9 @@ public class FileManagerActivity extends AbsActivity implements AbsRecyclerViewA
             @Override
             public void onItemClick(View view, int position, String path) {
                 if (path.equals("/")) {
-                    adapter.updateDataSource(startPath);
+                    files.clear();
+                    files.addAll(startPath);
+                    adapter.notifyDataSetChanged();
                     filePathNavRvAdapter.moveToIndex(position);
                     return;
                 }
@@ -69,15 +77,16 @@ public class FileManagerActivity extends AbsActivity implements AbsRecyclerViewA
         });
     }
 
-    private void getDataSource() {
+    private ArrayList<File> getDataSource() {
         //为了适配10/11  直接使用官方推荐的getExternalFilesDir
-        ArrayList<File> files = adapter.getmDataSource();
+        files = new ArrayList<>();
         files.add(getCacheDir());
         files.add(getFilesDir());
         files.add(getExternalCacheDir());
         files.add(getExternalFilesDir(null));
         startPath.addAll(files);
         navMap.put("/", null);
+        return files;
     }
 
     @Override
@@ -93,17 +102,29 @@ public class FileManagerActivity extends AbsActivity implements AbsRecyclerViewA
     public void onItemClick(View view, int position, File file) {
         if (file.isDirectory()) {
             File[] listFiles = file.listFiles();
-            ArrayList<File> files = new ArrayList<>(listFiles.length);
+            ArrayList<File> newFiles = new ArrayList<>(listFiles.length);
             for (File listFile : listFiles) {
-                files.add(listFile);
+                newFiles.add(listFile);
             }
             filePathNavRvAdapter.addPath(file.getName());
             navMap.put(file.getName(),file);
-            adapter.updateDataSource(files);
+            files.clear();
+            files.addAll(newFiles);
+            adapter.notifyDataSetChanged();
         }
     }
 
     @Override
     public void onItemLongClick(View view, int position, File file) {
+        Log.d(TAG, "onItemLongClick: ");
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("新建文件");
+        strings.add("新建文件夹");
+        strings.add("重命名");
+        strings.add("移动到");
+        strings.add("复制到");
+        new ListDialog(FileManagerActivity.this)
+                .setItem(strings)
+                .show();
     }
 }

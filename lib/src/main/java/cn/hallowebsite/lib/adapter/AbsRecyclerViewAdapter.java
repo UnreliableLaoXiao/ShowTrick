@@ -1,6 +1,5 @@
 package cn.hallowebsite.lib.adapter;
 
-import android.app.Activity;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,37 +7,15 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 //TODO 待测试
 public abstract class AbsRecyclerViewAdapter<T> extends RecyclerView.Adapter<AbsRecyclerViewAdapter.VH>  {
 
-    private ArrayList<T> mDataSource;
-    protected Activity context;
     /**
      * 事件回调监听
      */
     private OnItemClickListener onItemClickListener;
 
-    public AbsRecyclerViewAdapter(Activity context) {
-        this.context = context;
-        this.mDataSource = new ArrayList<>(0);
-    }
-
-    public void updateDataSource(ArrayList<T> files) {
-        mDataSource.clear();
-        mDataSource.addAll(files);
-        this.notifyDataSetChanged();
-    }
-
-    public ArrayList<T> getmDataSource() {
-        return mDataSource;
-    }
-
-    public T getDataByIndex(int postion) {
-        return mDataSource.get(postion);
+    public AbsRecyclerViewAdapter() {
     }
 
     public abstract int getLayoutId(int viewType);
@@ -48,15 +25,17 @@ public abstract class AbsRecyclerViewAdapter<T> extends RecyclerView.Adapter<Abs
         return VH.get(parent,getLayoutId(viewType));
     }
 
+    protected abstract T getDataByPosition(int position);
+
     @Override
     public void onBindViewHolder(final VH holder, final int position) {
-        convert(holder, mDataSource.get(position), position);
+        convert(holder, getDataByPosition(position), position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 if(onItemClickListener != null) {
                     int pos = holder.getLayoutPosition();
-                    onItemClickListener.onItemClick(holder.itemView, pos, mDataSource.get(position));
+                    onItemClickListener.onItemClick(holder.itemView, pos, getDataByPosition(position));
                 }
             }
         });
@@ -66,7 +45,7 @@ public abstract class AbsRecyclerViewAdapter<T> extends RecyclerView.Adapter<Abs
             public boolean onLongClick(View v) {
                 if(onItemClickListener != null) {
                     int pos = holder.getLayoutPosition();
-                    onItemClickListener.onItemLongClick(holder.itemView, pos, mDataSource.get(position));
+                    onItemClickListener.onItemLongClick(holder.itemView, pos, getDataByPosition(position));
                 }
                 //表示此事件已经消费，不会触发单击事件
                 return true;
@@ -76,8 +55,10 @@ public abstract class AbsRecyclerViewAdapter<T> extends RecyclerView.Adapter<Abs
 
     @Override
     public int getItemCount() {
-        return mDataSource.size();
+        return getTotalSize();
     }
+
+    protected abstract int getTotalSize();
 
     /**
      * 设置回调监听

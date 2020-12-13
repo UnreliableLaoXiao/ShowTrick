@@ -27,6 +27,14 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_file_more"/>
+
     </RelativeLayout>
     
     <androidx.recyclerview.widget.RecyclerView
@@ -45,15 +53,5 @@
         android:layout_height="match_parent"
         android:layout_marginTop="90dp"
         android:id="@+id/file_rv_list" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:id="@+id/setting_fab_manager"
-        android:layout_marginRight="30dp"
-        android:src="@drawable/ic_file_op"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
