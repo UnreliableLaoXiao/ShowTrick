@@ -21,6 +21,7 @@
         <activity android:name=".phoneinfo.AboutPhoneInfoActivity" />
         <activity android:name=".fundebug.FunDebugListActivity" />
         <activity android:name=".fundebug.filemanager.FileManagerActivity" />
+        <activity android:name=".fundebug.showdialog.DialogShowActivity" />
 
     </application>
 </manifest>

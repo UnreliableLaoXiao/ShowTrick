@@ -2,6 +2,7 @@
 <resources>
     <string-array name="fun_list">
         <item>@array/fun_file_manager</item>
+        <item>@array/fun_dialog_show</item>
     </string-array>
 
     <string-array name="fun_file_manager">
@@ -9,5 +10,12 @@
         <item>关于应用内部和外部的文件管理操作</item>
         <item>Setiting/About/Fun/FileManager</item>
         <item>@drawable/ic_file_manager</item>
+    </string-array>
+
+    <string-array name="fun_dialog_show">
+        <item>弹窗Dialog测试</item>
+        <item>关于Dialog弹窗的显示效果</item>
+        <item>Setiting/About/Fun/DialogShow</item>
+        <item>@drawable/ic_fun_dialog</item>
     </string-array>
 </resources>

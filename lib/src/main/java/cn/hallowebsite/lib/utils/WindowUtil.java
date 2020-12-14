@@ -58,8 +58,12 @@ public class WindowUtil {
         return Resources.getSystem().getDisplayMetrics().density;
     }
 
-    public static int dpToPx(int dp){
+    public static int dpToPxInt(int dp){
         return (int)(dp * Resources.getSystem().getDisplayMetrics().density + 0.5f);
+    }
+
+    public static float dpToPxFloat(float dp){
+        return dp * Resources.getSystem().getDisplayMetrics().density + 0.5f;
     }
 
 }
