@@ -65,7 +65,7 @@
                     android:id="@+id/left_top_seekbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:max="100" />
+                    android:max="50" />
 
             </LinearLayout>
 
@@ -84,7 +84,7 @@
                     android:id="@+id/right_top_seekbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:max="100" />
+                    android:max="50" />
 
             </LinearLayout>
 
@@ -103,7 +103,7 @@
                     android:id="@+id/left_bottom_seekbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:max="100" />
+                    android:max="50" />
 
             </LinearLayout>
 
@@ -122,7 +122,7 @@
                     android:id="@+id/right_bottom_seekbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:max="100" />
+                    android:max="50" />
 
             </LinearLayout>
 

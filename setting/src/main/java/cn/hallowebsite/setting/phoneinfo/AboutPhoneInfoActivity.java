@@ -37,8 +37,7 @@ public class AboutPhoneInfoActivity extends AbsActivity implements PhoneModelVie
     @SuppressLint("SetTextI18n")
     private void initData() {
         //获取屏幕分辨率
-        int[] size = new int[2];
-        WindowUtil.getWindowMetrics(this, size);
+        int[] size = WindowUtil.getWindowMetrics(this);
         screenSize.setText("屏幕分辨率：" + size[0] + "*" + size[1] + "");
         //获取应用区宽高
         WindowUtil.getAppWindowMetrics(this, size);

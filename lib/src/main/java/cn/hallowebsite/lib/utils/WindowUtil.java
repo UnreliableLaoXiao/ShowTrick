@@ -1,5 +1,6 @@
 package cn.hallowebsite.lib.utils;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
@@ -11,11 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 public class WindowUtil {
 
     //获取屏幕区域的宽高等尺寸获取
-    public static void getWindowMetrics(AppCompatActivity activity,int[] size){
-        DisplayMetrics metrics = new DisplayMetrics();
-        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+    public static int[] getWindowMetrics(Context context){
+        int[] size = new int[2];
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         size[1] = metrics.heightPixels;
         size[0] = metrics.widthPixels;
+        return size;
     }
 
     //TODO 有问题
